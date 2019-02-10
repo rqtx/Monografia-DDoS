@@ -6,29 +6,31 @@
 %  - Graduação: bacharelado|engenharia|licenciatura
 %  - Pós-graduação: [qualificacao], mestrado|doutorado, ppca|ppginf
 
-% \documentclass[engenharia]{UnB-CIC}%
-\documentclass[qualificacao,mestrado,ppca]{UnB-CIC}%
+\documentclass[engenharia]{UnB-CIC}%
+% \documentclass[qualificacao,mestrado,ppca]{UnB-CIC}%
 
 \usepackage{pdfpages}% incluir PDFs, usado no apêndice
-
+\usepackage{float}
+\usepackage{listings}
+\usepackage{indentfirst}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Informações do Trabalho
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\orientador{\prof \dr Guilherme Novaes Ramos}{CIC/UnB}%
+\orientador{\prof \dr João José Costa Gondim}{CIC/UnB}%
 %\coorientador{\prof \dr José Ralha}{CIC/UnB}
 \coordenador[a]{\prof[a] \dr[a] Ada Lovelace}{Bibliothèque universelle de Genève}%
-\diamesano{24}{dezembro}{2014}%
+\diamesano{21}{janeiro}{2018}%
 
 \membrobanca{\prof \dr Donald Knuth}{Stanford University}%
 \membrobanca{\dr Leslie Lamport}{Microsoft Research}%
 
-\autor{Guilherme N.}{Ramos}%
+\autor{Igor F.}{Miranda}%
 
-\titulo{UnB-CIC: Uma classe em LaTeX para textos do Departamento de Ciência da Computação}%
+\titulo{Ataque de negação de serviço por reflexão amplificada explorando Memcached}%
 
-\palavraschave{LaTeX, metodologia científica, trabalho de conclusão de curso}%
-\keywords{LaTeX, scientific method, thesis}%
+\palavraschave{Memcached, negação de serviço, negação de serviço distribuída, amplificação, reflexão}%
+\keywords{Memcached, denieal of service, distributed deniel of service, amplification, reflection}%
 
 \newcommand{\unbcic}{\texttt{UnB-CIC}}%
 
@@ -37,10 +39,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}%
     \capitulo{1_Introducao}{Introdução}%
-    \capitulo{2_UnB-CIC}{A Classe \unbcic}%
-    \capitulo{3_TCC}{Trabalho de Conclusão de Curso}%
-    \capitulo{4_Apresentacao}{Apresentações}%
-
-    \apendice{Apendice_Fichamento}{Fichamento de Artigo Científico}%
-    \anexo{Anexo1}{Documentação Original \unbcic\ (parcial)}%
+    \capitulo{2_Referencial_Teorico}{Referencial Teórico}%
+    \capitulo{3_Linderhof}{Linderhof}%
+    \capitulo{4_Apresentacao}{Ambiente experimental e resultados}%
+    \capitulo{5_Conclusao}{Conclusão e trabalhos futuros}%
 \end{document}%

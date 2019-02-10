@@ -1,0 +1,28 @@
+\section{Conclusão}
+
+Essa monografia apresentou as características de uma ataque de negação de serviço por reflexão amplificada explorando o Memcached, que é uma aplicação para caching em memória de chave-valor.
+
+Primeiro foi apresentado os princípios de uma ataque de negação de serviço, o conceito de uma ataque refletido amplificado e como explorar o Memcached para efetuar um ataque de reflexão amplificada.
+
+Em seguida apresentamos a ferramenta que foi implementada para gerar o ataque. Nela podemos adicionar qualquer tipo de ataque de negação de serviço, mas a ênfase é para ataque refletidos amplificados, sendo necessário apenas criar um mirror para a preparação e chamada do injetor para iniciar o ataque.
+
+Com a ferramenta desenvolvida fizemos a coleta de dados em laboratório para verificar as propriedades do ataque. Nessa coleta utilizamos três máquinas e um roteador para conecta-las. Como as máquinas não tinham o mesmo poder computacional optamos por fazer o rodizio das mesmas entre atacante, amplificador e vítima para reduzir qualquer interferência que essa diferença de poder computacional pudessem deixar na análise dos dados, resultando em 6 configurações de teste. Executamos cada nível de ataque por 5 segundos e os pacotes enviados e recebidos por cada máquina em cada configuração foram apresentados em gráficos e tabelas. 
+
+Com a análise dos dados coletados verificamos alguns aspectos interessantes do ataque. A amplificação foi dentro da esperada no primeiro nível do ataque mas no segundo nível do ataque tivemos umas queda na amplificação. Como todos os pacotes do atacante chegaram no refletor debitamos o motivo dessa queda no refletor que ignorou alguns pacotes por terem chegado em um tempo muito próximo no refletor. A saturação do refletor ocorreu a partir do nível 4, que foi o primeiro ponto onde observarmos uma grande redução da amplificação comparando com o primeiro nível.
+
+No atacante a partir do nível 8 observamos que a quantidade de pacotes gerados fica constante indicando uma saturação. Entretanto, essa saturação no atacante não interferiu na análise do refletor já que ele saturou antes do atacante. 
+
+Pelos resultados dos testes vimos que o ataque de negação de serviço por reflexão e amplificação utilizando o Memcached é viável e entrega uma grande amplificação, mas deve-se injetar uma pequena quantidade de pacotes no refletor com um espaço de tempo considerável entre o envio de cada pacote para obtermos o melhor desempenho do refletor. 
+
+Com esse trabalho conseguimos entender melhor o ataque de reflexão amplificada por Memcached. Algumas atitudes podem ser tomadas para evitar o uso de um servidor Memcached como refletor. O Memcached não possui nenhuma forma de autenticação de usuário, logo não se deve expor o servidor Memcached a internet. Caso seja necessário de preferencia ao protocolo TCP e caso necessite utiliza o protocolo UDP use um firewall para limitar o acesso a apenas os IPs confiáveis.
+
+\section{Trabalhos futuros}
+
+Os seguintes trabalhos futuros são propostos:
+
+\begin{itemize}
+    \item \textbf{Melhora do Linderhof:} 
+    Após análise do comportamento do refletor Memcached, seria uma boa ideia adicionar uma funcionalidade no Netuno para controlar a frequência de injeção dos pacotes. Outra melhoria seria a injeção em mais de uma refletor;
+    \item \textbf{Implementação de novos mirrors:}A ferramenta Linderhof tem o potencial de possuir uma variedades de ataques DoS refletidos.
+    \item \textbf{Executar teste em uma configuração mais próxima do real:} Para entender melhor como o ataque deveríamos fazer a coleta de dados em uma ambiente mais próximo de real, com mais saltos e uma maior latência.  
+\end{itemize}
